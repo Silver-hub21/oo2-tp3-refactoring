@@ -1,7 +1,11 @@
 package oop2.tp3.ejercicio1;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
 
-public class Main {
-    public static void main(String args[]) {
+public class ClienteTest {
+    @Test
+    void testCalcularDeudaYPuntosObtenidos() {
+
         Libro elTunel = new LibroRegular("El Túnel");
         Libro antesDelFin = new LibroRegular("Antes del Fin");
         CopiaLibro elTunelCopia = new CopiaLibro(elTunel);
@@ -11,8 +15,10 @@ public class Main {
         Cliente yo = new Cliente("Tomas");
         yo.alquilar(alquilerElTunel);
         yo.alquilar(alquilerAntesDelFin);
+
         Object[] resultado = yo.calcularDeudaYPuntosObtenidosRefactor();
-        System.out.println(resultado[0]);
-        System.out.println(resultado[1]);
+
+        assertEquals(10.0, resultado[0]);
+        assertEquals(2, resultado[1]);
     }
 }

@@ -10,10 +10,24 @@ public class Alquiler {
     }
 
     public int diasAlquilados() {
+
         return this.diasAlquilados;
     }
 
     public CopiaLibro copia() {
+
         return this.copia;
+    }
+
+    public int obtenerCodigoPrecio() {
+        return this.copia.obtenerCodigoPrecioLibro();
+    }
+
+    public boolean sumaPuntos() {
+        return this.copia.libro().sumarPuntos();
+    }
+
+    public double calcularMonto() {
+        return this.copia.obtenerMonto(this);
     }
 }
