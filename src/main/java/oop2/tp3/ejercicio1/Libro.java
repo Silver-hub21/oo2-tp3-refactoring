@@ -4,6 +4,7 @@ public abstract class Libro {
     private String nombre;
 
     public Libro(String nombre) {
+        validarNombre(nombre);
         this.nombre = nombre;
     }
 
@@ -16,5 +17,11 @@ public abstract class Libro {
     public String nombre() {
 
         return nombre;
+    }
+
+    private void validarNombre(String nombre) {
+        if (nombre.isEmpty()) {
+            throw new IllegalArgumentException("El nombre no puede ser vacío");
+        }
     }
 }

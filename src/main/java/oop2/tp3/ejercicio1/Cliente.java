@@ -8,11 +8,41 @@ public class Cliente {
     private String name;
 
     public Cliente(String nombre) {
-
+        validarNombre(nombre);
         this.name = nombre;
     }
 
-//    public Object[] calcularDeudaYPuntosObtenidos() {
+    public void alquilar(Alquiler rental) {
+
+        alquileres.add(rental);
+    }
+
+    //metodo refactorizado
+
+    public Object[] calcularDeudaYPuntosObtenidosRefactor() {
+        Object[] resultado = new Object[this.alquileres.toArray().length];
+        double total = 0;
+        int puntosAlquilerFrecuente = 0;
+        for (Alquiler alquiler : alquileres) {
+            total += alquiler.calcularMonto();
+            // sumo puntos por alquiler
+            puntosAlquilerFrecuente++;
+            // bonus por dos días de alquiler de un nuevo lanzamiento
+            if ((alquiler.sumaPuntos()) && alquiler.diasAlquilados() > 1) {
+                puntosAlquilerFrecuente++;
+            }
+        }
+        resultado[0] = total;
+        resultado[1] = puntosAlquilerFrecuente;
+        return resultado;
+    }
+    private void validarNombre(String nombre) {
+        if (nombre.isEmpty()) {
+            throw new IllegalArgumentException("El nombre no puede ser vacío");
+        }
+    }
+
+    //    public Object[] calcularDeudaYPuntosObtenidos() {
 //        Object[] resultado = new Object[2];
 //        double total = 0;
 //        int puntosAlquilerFrecuente = 0;
@@ -47,31 +77,6 @@ public class Cliente {
 //        resultado[1] = puntosAlquilerFrecuente;
 //        return resultado;
 //    }
-
-    public void alquilar(Alquiler rental) {
-
-        alquileres.add(rental);
-    }
-
-    //metodo refactorizado
-
-    public Object[] calcularDeudaYPuntosObtenidosRefactor() {
-        Object[] resultado = new Object[this.alquileres.toArray().length];
-        double total = 0;
-        int puntosAlquilerFrecuente = 0;
-        for (Alquiler alquiler : alquileres) {
-            total += alquiler.calcularMonto();
-            // sumo puntos por alquiler
-            puntosAlquilerFrecuente++;
-            // bonus por dos días de alquiler de un nuevo lanzamiento
-            if ((alquiler.sumaPuntos()) && alquiler.diasAlquilados() > 1) {
-                puntosAlquilerFrecuente++;
-            }
-        }
-        resultado[0] = total;
-        resultado[1] = puntosAlquilerFrecuente;
-        return resultado;
-    }
 
 }
 

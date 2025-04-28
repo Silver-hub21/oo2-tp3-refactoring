@@ -5,6 +5,8 @@ public class Alquiler {
     private int diasAlquilados;
 
     public Alquiler(CopiaLibro copia, int diasAlquilados) {
+        validarCopia(copia);
+        validarDiasAlquilados(diasAlquilados);
         this.copia = copia;
         this.diasAlquilados = diasAlquilados;
     }
@@ -30,4 +32,17 @@ public class Alquiler {
     public double calcularMonto() {
         return this.copia.obtenerMonto(this);
     }
+
+    private void validarDiasAlquilados(int diasAlquilados) {
+        if(diasAlquilados <= 0){
+            throw new RuntimeException("Dias alquilados invalidos.");
+        }
+    }
+
+    private void validarCopia(CopiaLibro copia) {
+        if(copia == null){
+            throw new RuntimeException("Debe agregar la copia del libro, no puede ser nula.");
+        }
+    }
+
 }
