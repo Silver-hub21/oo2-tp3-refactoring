@@ -10,6 +10,80 @@ import java.util.List;
 import java.util.Map;
 
 public class Recaudacion {
+    private static final int COMPANY_NAME_INDEX = 1;
+    private static final int CITY_INDEX = 4;
+    private static final int STATE_INDEX = 5;
+    private static final int ROUND_INDEX = 9;
+    private final String filePath;
+    private final LectorArchivosService readerService;
+
+    public Recaudacion(String filePath) {
+        this.filePath = filePath;
+        this.readerService = new LectorArchivosService();
+    }
+
+    //refactorizado:
+    public List<Map<String, String>> where(Map<String, String> options)
+            throws IOException {
+        List<String[]> csvData = readerService.leerCSV(this.filePath);
+        csvData.remove(0);
+
+        if (options.containsKey("company_name")) { //1
+            List<String[]> results = obtenerResultados(csvData, COMPANY_NAME_INDEX, options, "company_name");
+            csvData = results;
+        }
+
+        if (options.containsKey("city")) { //4
+            List<String[]> results = obtenerResultados(csvData, CITY_INDEX , options, "city");
+            csvData = results;
+        }
+
+        if (options.containsKey("state")) { //5
+            List<String[]> results = obtenerResultados(csvData, STATE_INDEX, options, "state");
+            csvData = results;
+        }
+
+        if (options.containsKey("round")) { //9
+            List<String[]> results = obtenerResultados(csvData, ROUND_INDEX, options, "round");
+            csvData = results;
+        }
+
+        List<Map<String, String>> output = new ArrayList<Map<String, String>>();
+        for (String[] csvDatum : csvData) {
+            Map<String, String> mapped = mapearDatos(csvDatum);
+            output.add(mapped);
+        }
+        return output;
+    }
+
+    private static Map<String, String> mapearDatos(String[] csvDatum) {
+        Map<String, String> mapped = new HashMap<String, String>();
+        mapped.put("permalink", csvDatum[0]);
+        mapped.put("company_name", csvDatum[1]);
+        mapped.put("number_employees", csvDatum[2]);
+        mapped.put("category", csvDatum[3]);
+        mapped.put("city", csvDatum[4]);
+        mapped.put("state", csvDatum[5]);
+        mapped.put("funded_date", csvDatum[6]);
+        mapped.put("raised_amount", csvDatum[7]);
+        mapped.put("raised_currency", csvDatum[8]);
+        mapped.put("round", csvDatum[9]);
+        return mapped;
+    }
+
+    private static List<String[]> obtenerResultados(List<String[]> csvData, int x, Map<String, String> options, String key) {
+        List<String[]> results = new ArrayList<String[]>();
+        for (String[] csvDatum : csvData) {
+            if (csvDatum[x].equals(options.get(key))) {
+                results.add(csvDatum);
+            }
+        }
+        return results;
+    }
+
+
+
+
     //original:
     //    public static List<Map<String, String>> where(Map<String, String> options)
 //            throws IOException {
@@ -86,77 +160,6 @@ public class Recaudacion {
 //        }
 //        return output;
 //    }
-    
-    //refactorizado:
-    public static List<Map<String, String>> where(Map<String, String> options, String filePath)
-            throws IOException {
-        List<String[]> csvData = new ArrayList<String[]>();
-        CSVReader reader = null;
-        try {
-            reader = null;
-            reader = new CSVReader(new FileReader(filePath));
-            String[] row = null;
-            while ((row = reader.readNext()) != null) {
-                csvData.add(row);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } finally {
-            reader.close();
-        }
 
-        csvData.remove(0);
 
-        if (options.containsKey("company_name")) { //1
-            List<String[]> results = obtenerResultados(csvData, 1, options, "company_name");
-            csvData = results;
-        }
-
-        if (options.containsKey("city")) { //4
-            List<String[]> results = obtenerResultados(csvData, 4, options, "city");
-            csvData = results;
-        }
-
-        if (options.containsKey("state")) { //5
-            List<String[]> results = obtenerResultados(csvData, 5, options, "state");
-            csvData = results;
-        }
-
-        if (options.containsKey("round")) { //9
-            List<String[]> results = obtenerResultados(csvData, 9, options, "round");
-            csvData = results;
-        }
-
-        List<Map<String, String>> output = new ArrayList<Map<String, String>>();
-        for (String[] csvDatum : csvData) {
-            Map<String, String> mapped = mapearDatos(csvDatum);
-            output.add(mapped);
-        }
-        return output;
-    }
-
-    private static Map<String, String> mapearDatos(String[] csvDatum) {
-        Map<String, String> mapped = new HashMap<String, String>();
-        mapped.put("permalink", csvDatum[0]);
-        mapped.put("company_name", csvDatum[1]);
-        mapped.put("number_employees", csvDatum[2]);
-        mapped.put("category", csvDatum[3]);
-        mapped.put("city", csvDatum[4]);
-        mapped.put("state", csvDatum[5]);
-        mapped.put("funded_date", csvDatum[6]);
-        mapped.put("raised_amount", csvDatum[7]);
-        mapped.put("raised_currency", csvDatum[8]);
-        mapped.put("round", csvDatum[9]);
-        return mapped;
-    }
-
-    private static List<String[]> obtenerResultados(List<String[]> csvData, int x, Map<String, String> options, String key) {
-        List<String[]> results = new ArrayList<String[]>();
-        for (String[] csvDatum : csvData) {
-            if (csvDatum[x].equals(options.get(key))) {
-                results.add(csvDatum);
-            }
-        }
-        return results;
-    }
 }

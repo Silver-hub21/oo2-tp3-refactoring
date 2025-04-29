@@ -5,11 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0fff5a23-2a9c-4779-87a2-bbfd1c230af7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/oop2/tp3/ejercicio2/LectorArchivosService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oop2/tp3/ejercicio3/AlquilerAuto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oop2/tp3/ejercicio3/Cena.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oop2/tp3/ejercicio3/Desayuno.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/oop2/tp3/ejercicio3/Gasto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/oop2/tp3/ejercicio3/ReporteTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop2/tp3/ejercicio1/Alquiler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop2/tp3/ejercicio1/Alquiler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop2/tp3/ejercicio1/Cliente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop2/tp3/ejercicio1/Cliente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/oop2/tp3/ejercicio1/Libro.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop2/tp3/ejercicio1/Libro.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/oop2/tp3/ejercicio2/Recaudacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop2/tp3/ejercicio2/Recaudacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop2/tp3/ejercicio3/EjemploDeUsoDelReporte.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop2/tp3/ejercicio3/EjemploDeUsoDelReporte.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/oop2/tp3/ejercicio3/ReporteDeGastos.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/oop2/tp3/ejercicio3/ReporteDeGastos.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/oop2/tp3/ejercicio2/RecaudacionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/oop2/tp3/ejercicio2/RecaudacionTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,19 +43,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "JUnit.ClienteTest.testCalcularDeudaYPuntosObtenidos.executor": "Run",
-    "JUnit.RecaudacionTest.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "settings.editor.selected.configurable": "preferences.keymap"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.EjemploDeUsoDelReporte.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ClienteTest.testCalcularDeudaYPuntosObtenidos.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.RecaudacionTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.ReporteTest.testReporte.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
-}]]></component>
-  <component name="RunManager" selected="JUnit.RecaudacionTest">
+}</component>
+  <component name="RunManager" selected="JUnit.ReporteTest.testReporte">
+    <configuration name="EjemploDeUsoDelReporte" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="oop2.tp3.ejercicio3.EjemploDeUsoDelReporte" />
+      <module name="oop2-refactoring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="oop2.tp3.ejercicio3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="oop2.tp3.ejercicio1.Main" />
       <module name="oop2-refactoring" />
@@ -95,6 +115,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ReporteTest.testReporte" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="oop2-refactoring" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="oop2.tp3.ejercicio3.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="oop2.tp3.ejercicio3" />
+      <option name="MAIN_CLASS_NAME" value="oop2.tp3.ejercicio3.ReporteTest" />
+      <option name="METHOD_NAME" value="testReporte" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <method v="2">
         <option name="Make" enabled="true" />
@@ -106,6 +142,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ReporteTest.testReporte" />
+        <item itemvalue="Application.EjemploDeUsoDelReporte" />
         <item itemvalue="JUnit.RecaudacionTest" />
         <item itemvalue="JUnit.ClienteTest.testCalcularDeudaYPuntosObtenidos" />
         <item itemvalue="Application.Main" />

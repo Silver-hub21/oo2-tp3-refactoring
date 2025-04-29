@@ -16,28 +16,32 @@ public class RecaudacionTest {
     public void testWhereGivenCompany() throws IOException {
         Map<String, String> options = new HashMap<String, String>();
         options.put("company_name", "Facebook");
-        assertEquals(Recaudacion.where(options, "src/main/resources/data.csv").size(), 7);
+        var recaudacion = new Recaudacion("src/main/resources/data.csv");
+        assertEquals(recaudacion.where(options).size(), 7);
     }
 
     @Test
     public void testWhereGivenCity() throws IOException {
         Map<String, String> options = new HashMap<String, String>();
         options.put("city", "Tempe");
-        assertEquals(Recaudacion.where(options, "src/main/resources/data.csv").size(), 3);
+        var recaudacion = new Recaudacion("src/main/resources/data.csv");
+        assertEquals(recaudacion.where(options).size(), 3);
     }
 
     @Test
     public void testWhereGivenState() throws IOException {
         Map<String, String> options = new HashMap<String, String>();
         options.put("state", "CA");
-        assertEquals(Recaudacion.where(options, "src/main/resources/data.csv").size(), 873);
+        var recaudacion = new Recaudacion("src/main/resources/data.csv");
+        assertEquals(recaudacion.where(options).size(), 873);
     }
 
     @Test
     public void testWhereGivenRound() throws IOException {
         Map<String, String> options = new HashMap<String, String>();
         options.put("round", "a");
-        assertEquals(Recaudacion.where(options, "src/main/resources/data.csv").size(), 582);
+        var recaudacion = new Recaudacion("src/main/resources/data.csv");
+        assertEquals(recaudacion.where(options).size(), 582);
     }
 
     @Test
@@ -45,21 +49,24 @@ public class RecaudacionTest {
         Map<String, String> options = new HashMap<String, String>();
         options.put("round", "a");
         options.put("company_name", "Facebook");
-        assertEquals(Recaudacion.where(options, "src/main/resources/data.csv").size(), 1);
+        var recaudacion = new Recaudacion("src/main/resources/data.csv");
+        assertEquals(recaudacion.where(options).size(), 1);
     }
 
     @Test
     public void testWhereNotExists() throws IOException {
         Map<String, String> options = new HashMap<String, String>();
         options.put("company_name", "NotFacebook");
-        assertEquals(Recaudacion.where(options, "src/main/resources/data.csv").size(), 0);
+        var recaudacion = new Recaudacion("src/main/resources/data.csv");
+        assertEquals(recaudacion.where(options).size(), 0);
     }
 
     @Test
     public void testWhereCorrectKeys() throws IOException {
         Map<String, String> options = new HashMap<String, String>();
         options.put("company_name", "Facebook");
-        Map<String, String> row = Recaudacion.where(options, "src/main/resources/data.csv").get(0);
+        var recaudacion = new Recaudacion("src/main/resources/data.csv");
+        Map<String, String> row = recaudacion.where(options).get(0);
 
         assertEquals(row.get("permalink"), "facebook");
         assertEquals(row.get("company_name"), "Facebook");
